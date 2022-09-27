@@ -10,7 +10,7 @@ public class CalculatorTest {
 //        arrange
         int a = 10;
         int b = 3;
-        int expected = 12;
+        int expected = 13;
 
 //        act
         int actual = Calculator.sum(a, b);
@@ -35,7 +35,7 @@ public class CalculatorTest {
 
 //        assert
         if (expected != actual) {
-            Assert.fail();
+            fail();
         }
     }
 
@@ -51,8 +51,16 @@ public class CalculatorTest {
 
 //        assert
         if (expected != actual) {
-            Assert.fail();
+            fail();
         }
+    }
+
+    @Test(timeout = 3000)
+    public void testMulPower() {
+        int a = 10;
+        int b = 3;
+
+        Calculator.mul(a, b);
     }
 
     @Test
@@ -67,7 +75,14 @@ public class CalculatorTest {
 
 //        assert
         if (expected != actual) {
-            Assert.fail();
+            fail();
         }
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivByZero() {
+        int a = 10;
+        int b = 0;
+        Calculator.div(a, b);
     }
 }
